@@ -22,12 +22,15 @@ export default function Banner(props) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
+    let bgSize = "100%";
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+      bgSize = "cover";
 
     return (
         <header
             className="banner"
             style={{
-                backgroundSize: "100%",
+                backgroundSize: {bsSize},
                 backgroundImage: `url(
                     ${baseURL}${movie.backdrop_path}
                 )`,
