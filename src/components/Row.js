@@ -22,12 +22,14 @@ export default function Row(props) {
         fetchData();
     }, [fetchURL]);
 
-    let trailerWidth = "50%";
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-      trailerWidth = "100%";
+    let trailerWidth = window.innerWidth / 2, trailerHeight = 400;
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      trailerWidth *= 2 ;
+      trailerHeight = trailerWidth / 16 * 9;
+    };
     const options = {
-        height: '400',
-        width: {trailerWidth},
+        height: `${trailerHeight}`,
+        width: `${trailerWidth}`,
         playerVars: {
             autoplay: 1
         },
