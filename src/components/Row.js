@@ -26,12 +26,12 @@ export default function Row(props) {
     // of the screen and then reducing it to 80%, the values
     // of the trailer width and height are initiated for the desktop version
     // but with the if statement it is changing for mobile devices
-    let trailerWidth = (window.innerWidth / 2) * 0.95, trailerHeight = 400;
+    let trailerWidth = (window.innerWidth / 2) * 0.9, trailerHeight = 400;
     if(window.innerWidth < 501) {
       trailerWidth *= 2 ;
       trailerHeight = trailerWidth / 16 * 9;
     } else {
-      trailerWidth += trailerWidth * 0.05;
+      trailerWidth += trailerWidth * 0.1;
     }
     const options = {
         height: `${trailerHeight}`,
