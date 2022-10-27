@@ -34,3 +34,9 @@
 .row-poster-large:hover {
   transform: scale(1.09);
 }
+
+@media screen and (max-width) {
+  .row h2:first-op-type {
+    margin-top: 1.5rem
+  }
+}
