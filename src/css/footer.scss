@@ -37,9 +37,11 @@ footer {
 @media screen and (max-width: 500px) {
   footer {
     font-size: .8rem;
+    padding-block: 1rem;
 
     img {
       width: 100px;
+      margin-bottom: 1.5rem
     }
   }
 }
