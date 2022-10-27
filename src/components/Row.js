@@ -22,11 +22,16 @@ export default function Row(props) {
         fetchData();
     }, [fetchURL]);
 
-    let trailerWidth = window.innerWidth / 2, trailerHeight = 400;
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // initiating the trailer width to be half the width
+    // of the screen and then reducing it to 80%, the values
+    // of the trailer width and height are initiated for the desktop version
+    // but with the if statement it is changing for mobile devices
+    let trailerWidth = (window.innerWidth / 2) * 4 / 5, trailerHeight = 400;
+    if(window.innerWidth < 501) {
       trailerWidth *= 2 ;
       trailerHeight = trailerWidth / 16 * 9;
-    };
+    } else
+        trailerWidth *= 5 / 4;
     const options = {
         height: `${trailerHeight}`,
         width: `${trailerWidth}`,
