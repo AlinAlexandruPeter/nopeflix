@@ -23,7 +23,7 @@ export default function Row(props) {
     }, [fetchURL]);
 
     let trailerWidth = "50%";
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
       trailerWidth = "100%";
     const options = {
         height: '400',
