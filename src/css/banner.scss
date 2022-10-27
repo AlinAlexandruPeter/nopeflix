@@ -56,7 +56,9 @@
 
 @media screen and (max-width: 500px) {
   .banner {
-    height: 200px;
+    height: 200px !important;
+    max-height: 200px !imprtant;
+    width: 100vw !important;
     max-width: 100vw;
 
     .banner-content {
