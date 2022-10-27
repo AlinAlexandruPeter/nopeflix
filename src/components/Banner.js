@@ -30,7 +30,7 @@ export default function Banner(props) {
         <header
             className="banner"
             style={{
-                backgroundSize: {bgSize},
+                backgroundSize: "cover",
                 backgroundImage: `url(
                     ${baseURL}${movie.backdrop_path}
                 )`,
