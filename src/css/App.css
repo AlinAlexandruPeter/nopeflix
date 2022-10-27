@@ -6,3 +6,9 @@
   background-color: #111;
   overflow-x: hidden;
 }
+
+img,
+button,
+.row {
+  -webkit-user-select: none !important
+}
