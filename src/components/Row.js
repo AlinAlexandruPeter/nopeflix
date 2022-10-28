@@ -14,8 +14,11 @@ export default function Row(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(fetchURL);
+            const request = await axios.get(url: fetchURL, config: {
+              append_to_response: "videos"
+            });
             setMovies(request.data.results);
+            console.log(request.data.results)
             return request;
         };
 
