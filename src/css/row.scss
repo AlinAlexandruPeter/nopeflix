@@ -89,7 +89,8 @@
   
   .trailer-wrapper {
     flex-direction: column;
-    height: 800px;
+    height: auto;
+    background: pink;
     
     .movie-details {
       width: 80%;
