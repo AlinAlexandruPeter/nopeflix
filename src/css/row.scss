@@ -83,6 +83,10 @@
 }
 
 @media screen and (width: 500px) {
+  .app {
+    overflow: auto
+  }
+  
   .trailer-wrapper {
     flex-direction: column;
     height: 800px;
