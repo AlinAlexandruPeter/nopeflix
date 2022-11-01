@@ -35,8 +35,49 @@
   transform: scale(1.09);
 }
 
-@media screen and (max-width) {
-  .row h2:first-op-type {
-    margin-top: 1.5rem
+.trailer-wrapper {
+  width: 100vw;
+  position: relative;
+  display: flex;
+
+  .movie-details {
+    margin-left: 2.5rem;
+    width: 35%;
+  }
+
+  span {
+    font-weight: 300;
+    color: #ccc;
+    margin-inline: 0.5rem !important;
+  }
+
+  h1 {
+    margin-block: 0rem;
+  }
+
+  h1 a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  h1 a:hover {
+    text-decoration: underline;
+  }
+
+  .runtime-votes {
+    margin-left: 1rem;
+
+    span {
+      font-weight: unset;
+      color: #ccc;
+      padding-inline: 15px;
+      padding-bottom: 3px;
+      border-right: 1px solid #ccc;
+      margin-inline: unset !important;
+    }
+
+    span:last-of-type {
+      border: none;
+    }
   }
 }
