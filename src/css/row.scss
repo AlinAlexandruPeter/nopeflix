@@ -85,5 +85,10 @@
 @media screen and (width: 500px) {
   .trailer-wrapper {
     flex-direction: column;
+    height: 800px;
+    
+    .movie-details {
+      width: 80%;
+    }
   }
 }
