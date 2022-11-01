@@ -86,9 +86,11 @@
   .trailer-wrapper {
     flex-direction: column !important;
     height: auto;
+    margin-block: .5rem 1rem;
     
     .movie-details {
       width: 80%;
+      margin-left: 1rem;
     }
   }
 }
