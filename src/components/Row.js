@@ -10,17 +10,26 @@ const baseURL = "https://image.tmdb.org/t/p/original";
 export default function Row(props) {
     const { title, fetchURL, isLargeRow } = props;
     const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState([])
+    const [genres, setGenres] = useState([])
     const [trailerURL, setTrailerURL] = useState("");
 
+    const API_KEY = "bb432c86a681943a07c80b99b5f3c237";
+    const url = "https://api.themoviedb.org/3"
+
     useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(fetchURL);
+        async function fetchMovies() {
+            const request  = await axios.get(`${url}${fetchURL}`, {
+                params: {
+                    api_key: API_KEY,
+                    append_to_response: "videos"
+                }
+            })
             setMovies(request.data.results);
-            console.log(request.data)
             return request;
         };
-
-        fetchData();
+        
+        fetchMovies();
     }, [fetchURL]);
 
     // initiating the trailer width to be half the width
@@ -42,22 +51,33 @@ export default function Row(props) {
         },
     }
 
-    const handleMovieClick = (e, movie) => {
-        if (trailerURL) {
-            setTrailerURL("")
-        } else {
-            movieTrailer(movie?.name || "")
-            .then(url => {
-                const urlParams = new URLSearchParams(new URL(url).search);
-                console.log(urlParams);
-                const videoId = urlParams.get("v");
-                setTrailerURL(videoId)
-            })
-            .catch(err => {
-                console.error(err);
-            })
+    const fetchMovie = async (id) => {
+        const { data } = await axios.get(`${url}/movie/${id}`, {
+            params: {
+                api_key: API_KEY,
+                append_to_response: "videos"
+            }
+        });
+        setSelectedMovie(data)
+        const movieGenres = data.genres.map(genre => {
+            return (
+                <span
+                    key={data.genres.indexOf(genre)}
+                    className="genres"
+                >
+                    {genre.name}
+                </span>
+            )
+        })
+        setGenres(movieGenres)
+
+        if (data.videos && data.videos.results) {
+            const trailer = data.videos.results.find(vid => vid.name === "Official Trailer")
+            setTrailerURL(trailer ? trailer.key : data.videos.results[0].key)
         }
+
     }
+
 
     return (
         <div className="row">
@@ -69,7 +89,8 @@ export default function Row(props) {
                         return <img
                             key={movie.id}
                             onClick={e => {
-                                handleMovieClick(e, movie);
+                                
+                                fetchMovie(movie.id);
                             }}
                             className={`row-poster ${isLargeRow && "row-poster-large"}`}
                             src={isLargeRow ? baseURL + movie.poster_path : baseURL + movie.backdrop_path}
@@ -81,6 +102,45 @@ export default function Row(props) {
 
             <div className="trailer-wrapper">
                 {trailerURL && <YouTube videoId={trailerURL} opts={options} />}
+                <div className="movie-details">
+                    {
+                        trailerURL &&
+                        <h1>
+                            <a
+                                href={`https://www.imdb.com/title/${selectedMovie.imdb_id}`}
+                                target="_blank"
+                            >
+                                {selectedMovie.title}
+                            </a>
+                        </h1>
+                    }
+                    <br />
+                    {
+                        trailerURL &&
+                        <div className="runtime-votes">
+                            {selectedMovie && <span>{selectedMovie.runtime}min </span>}
+                            {
+                                selectedMovie &&
+                                <span>
+                                    {
+                                        selectedMovie.vote_average.toString().split(".")[1].length > 2 ?
+                                        selectedMovie.vote_average.toString().substring(0, selectedMovie.vote_average.toString().length - 1) :
+                                        selectedMovie.vote_average
+                                    } / 10
+                                </span>
+                            }
+                            {selectedMovie && <span>votes: {selectedMovie.vote_count}</span>}
+                        </div>
+                    }
+                    <br />
+                    {trailerURL && <p>{selectedMovie.overview}</p>}
+                    <br />
+                    {trailerURL && <h3>Genres: {genres}</h3>}
+                    <br />
+                    {trailerURL && <h3>Accesed: <span>{Math.floor(selectedMovie.popularity)} times (on TMDb)</span></h3>}
+                    <br />
+                    {trailerURL && <h3>Release Date: <span>{selectedMovie.release_date}</span></h3>}
+                </div>
             </div>
         </div>
     )
