@@ -14,7 +14,7 @@ export default function Row(props) {
     const [genres, setGenres] = useState([])
     const [trailerURL, setTrailerURL] = useState("");
 
-    const API_KEY = "bb432c86a681943a07c80b99b5f3c237";
+    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
     const url = "https://api.themoviedb.org/3"
 
     useEffect(() => {
