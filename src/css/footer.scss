@@ -26,7 +26,8 @@ footer {
       text-decoration: none;
     }
 
-    span:first-of-type {
+    span:first-of-type,
+    span:nth-of-type(3) {
       a:hover {
         text-decoration: underline;
       }
