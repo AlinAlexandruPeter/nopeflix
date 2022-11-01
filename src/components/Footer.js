@@ -20,6 +20,11 @@ export default function Footer() {
                     </a>
                 </span>
                 <span>
+                    <a href="https://www.themoviedb.org/documentation/api" target="_blank">
+                        API
+                    </a>
+                </span>
+                <span>
                     <i className="fa-regular fa-copyright"></i>
                     &nbsp;
                     All rights reserved
@@ -27,4 +32,4 @@ export default function Footer() {
             </section>
         </footer>
     )
-}
+};
