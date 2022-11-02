@@ -12,7 +12,7 @@ export default function Footer() {
                 <span>
                     Owner:
                     &nbsp;
-                    <a href="https://github.com/AlinAlexandruPeter/nopeflix">AlinAlexandruPeter</a>
+                    <a href="https://github.com/AlinAlexandruPeter/">AlinAlexandruPeter</a>
                 </span>
                 <span>
                     <a href="https://github.com/AlinAlexandruPeter/nopeflix">
