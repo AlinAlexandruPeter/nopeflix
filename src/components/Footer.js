@@ -12,7 +12,12 @@ export default function Footer() {
                 <span>
                     Owner:
                     &nbsp;
-                    <a href="https://github.com/AlinAlexandruPeter/">AlinAlexandruPeter</a>
+                    Mesaros George
+                </span>
+                <span>
+                    Developer:
+                    &nbsp;
+                    <a href="https://github.com/AlinAlexandruPeter" style="color: #585451">AlinAlexandruPeter</a>
                 </span>
                 <span>
                     <a href="https://github.com/AlinAlexandruPeter/nopeflix">
