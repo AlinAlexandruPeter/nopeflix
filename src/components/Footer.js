@@ -17,7 +17,7 @@ export default function Footer() {
                 <span>
                     Developer:
                     &nbsp;
-                    <a href="https://github.com/AlinAlexandruPeter" style="color: #585451">AlinAlexandruPeter</a>
+                    <a href="https://github.com/AlinAlexandruPeter">AlinAlexandruPeter</a>
                 </span>
                 <span>
                     <a href="https://github.com/AlinAlexandruPeter/nopeflix">
